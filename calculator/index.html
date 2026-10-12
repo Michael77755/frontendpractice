@@ -3,27 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>C++ and JS Test</title>
+  <link rel ="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Michael's Calculator</h1>
 
-  <!-- Part 1: GET test -->
+  <div class="card">
+  <h3>Instructions</h3>
   <button id="btn">Click for Instructions</button>
-  <p id="output"></p>
+  <div id="output" class="result-box">Waiting for instructions...</div>
+</div>
 
-  <hr>
+<div class="card">
+  <h3>Greeting</h3>
+  <div class="form-row">
+    <input type="text" id="name" placeholder="Enter your name" />
+    <button id="sendGreetBtn">Send</button>
+  </div>
+  <div id="greetOutput" class="result-box">No greeting yet</div>
+</div>
 
-  <!-- Part 2: POST test -->
-  <h3>Enter your name</h3>
-  <input type="text" id="name" placeholder="Enter your name" />
-  <button id="sendGreetBtn">Send to C++</button>
-  <p id="greetOutput"></p><hr>
-  <h3>Enter the numbers and operators</h3>
-  <input type="number" id="numberone" placeholder="Enter the first Number" />
-  <input type="text" id="op" placeholder="Enter the Operator" />
-  <input type="number" id="numbertwo" placeholder="Enter the second Number" />
-  <button id="sendCalcBtn">Calculate</button>
-  <p id="calculation"></p>
+<div class="card">
+  <h3>Calculator</h3>
+  <div class="form-row">
+    <input type="number" id="numberone" placeholder="Num 1" />
+    <input type="text" id="op" placeholder="Op (+, -, *, /)" style="max-width: 90px; text-align: center;" />
+    <input type="number" id="numbertwo" placeholder="Num 2" />
+  </div>
+  <button id="sendCalcBtn" style="width: 100%;">Calculate</button>
+  <div id="calculation" class="result-box">Result will appear here</div>
+</div>
 
   <script>
     // Part 1: GET

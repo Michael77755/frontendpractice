@@ -1,0 +1,3 @@
+ g++ -std=c++17 server.cpp -lpthread -o server
+
+ g++ -std=c++17 server.cpp calculator.cpp greeter.cpp -lpthread -o server
