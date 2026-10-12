@@ -1,3 +1,0 @@
-[submodule "libs/juce"]
-	path = libs/juce
-	url = https://github.com/juce-framework/JUCE.git

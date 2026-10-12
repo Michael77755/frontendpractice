@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C++ and JS Test</title>
+</head>
+<body>
+  <h1>Michael's Calculator</h1>
+
+  <!-- Part 1: GET test -->
+  <button id="btn">Click for Instructions</button>
+  <p id="output"></p>
+
+  <hr>
+
+  <!-- Part 2: POST test -->
+  <h3>Enter your name</h3>
+  <input type="text" id="name" placeholder="Enter your name" />
+  <button id="sendGreetBtn">Send to C++</button>
+  <p id="greetOutput"></p><hr>
+  <h3>Enter the numbers and operators</h3>
+  <input type="number" id="numberone" placeholder="Enter the first Number" />
+  <input type="text" id="op" placeholder="Enter the Operator" />
+  <input type="number" id="numbertwo" placeholder="Enter the second Number" />
+  <button id="sendCalcBtn">Calculate</button>
+  <p id="calculation"></p>
+
+  <script>
+    // Part 1: GET
+    document.getElementById('btn').addEventListener('click', async () => {
+      const response = await fetch('http://localhost:18080/api/message');
+      const data = await response.json();
+      document.getElementById('output').innerText = data.message;
+    });
+
+    // Part 2: POST
+    document.getElementById('sendGreetBtn').addEventListener('click', async () => {
+      const name = document.getElementById('name').value;
+
+      const response = await fetch('http://localhost:18080/api/greet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name })
+      });
+
+      const data = await response.json();
+      document.getElementById('greetOutput').innerText = data.greeting;
+    });
+
+    document.getElementById('sendCalcBtn').addEventListener('click', async () => {
+      const numberone = document.getElementById('numberone').value;
+      const op = document.getElementById('op').value;
+      const numbertwo = document.getElementById('numbertwo').value;
+
+      const response = await fetch('http://localhost:18080/api/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ numberone : parseInt(numberone, 10), op: op, numbertwo : parseInt(numbertwo, 10) })
+      });
+
+      const data = await response.json();
+      document.getElementById('calculation').innerText = data.calculation || data.error;
+    });
+  </script>
+</body>
+</html>
